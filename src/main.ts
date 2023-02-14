@@ -21,17 +21,20 @@ import { bootstrapApplication } from '@angular/platform-browser';
 export class App {
   name = 'Angular';
 
-  test = '89';
+  test = 89;
 
   ngAfterViewInit() {
     var box2 = document.getElementById('box2');
-
+    document.onpointermove = (ev) => {
+      box2.style.background = 'black';
+      this.test = ev.movementY;
+    };
     box2.ontouchstart = () => {
       console.log('test');
       box2.style.height = '200px';
-      document.onpointermove = (ev) => {
+      document.getElementById('outerbox').onpointermove = (ev) => {
         box2.style.background = 'black';
-        this.test = ev.movementY + 'aa';
+        this.test = ev.movementY;
       };
     };
   }
