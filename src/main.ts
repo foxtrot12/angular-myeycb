@@ -8,7 +8,6 @@ import { bootstrapApplication } from '@angular/platform-browser';
   standalone: true,
   imports: [CommonModule],
   template: `
-
   <div class="outerbox" id="outerbox">
 
   <div id="box2" class="box">
@@ -24,14 +23,14 @@ export class App {
 
   ngAfterViewInit() {
     var box2 = document.getElementById('box2');
+    var movey = document.getElementById('movey');
 
     box2.ontouchstart = () => {
       console.log('test');
       box2.style.height = '200px';
       document.onpointermove = (ev) => {
-        if (ev.movementY < 0) {
-          box2.style.background = 'black';
-        }
+        box2.style.background = 'black';
+        movey.innerHTML = ev.movementY + 'aa';
       };
     };
   }
