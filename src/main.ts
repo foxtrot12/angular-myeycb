@@ -9,8 +9,11 @@ import { bootstrapApplication } from '@angular/platform-browser';
   imports: [CommonModule],
   template: `
 
-    <div id="box" class="box"></div>
-    <div id="box2" class="box">
+  <div class="outerbox" id="outerbox">
+
+  <div id="box2" class="box">
+
+  </div>
 
   
 </div>
@@ -20,22 +23,15 @@ export class App {
   name = 'Angular';
 
   ngAfterViewInit() {
-    var box = document.getElementById('box');
     var box2 = document.getElementById('box2');
 
-    document.onpointerdown = () => {
-      console.log('test');
-      box.style.height = '200px';
-      document.onpointermove = () => {
-        box.style.background = 'blue';
-      };
-    };
-
-    document.ontouchstart = () => {
+    box2.ontouchstart = () => {
       console.log('test');
       box2.style.height = '200px';
-      document.onpointermove = () => {
-        box2.style.background = 'black';
+      document.onpointermove = (ev) => {
+        if (ev.movementY < 0) {
+          box2.style.background = 'black';
+        }
       };
     };
   }

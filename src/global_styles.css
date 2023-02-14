@@ -4,4 +4,13 @@
   border: 1px solid;
   height: 100px;
   width: 100px;
+
+  position: absolute;
+  bottom: -10vh;
+}
+
+.outerbox {
+  border: 1px solid black;
+
+  height: 200vh;
 }
